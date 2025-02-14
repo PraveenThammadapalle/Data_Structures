@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+void linear_search(int a[], int data, int position, int n)
+{
+    if (position < n) {
+        if (a[position] == data) {
+            printf("\nData Found at position %d\n", position);
+            return; // Exit after finding the data
+        }
+        linear_search(a, data, position + 1, n);
+    } else {
+        printf("\nData not found\n");
+    }
+}
+
+int main()
+{
+    int a[25], i, n, data;  
+    printf("\nEnter the number of elements: ");  
+    scanf("%d", &n);
+    
+    printf("\nEnter the elements: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    
+    printf("\nEnter the element to be searched: ");  
+    scanf("%d", &data);
+    
+    linear_search(a, data, 0, n);  
+    
+    return 0;
+}
