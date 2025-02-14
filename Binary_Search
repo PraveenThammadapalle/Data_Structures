@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main() {
+    int number[25], n, data, i, flag = 0, low, high, mid;
+
+    // Prompt for the number of elements
+    printf("\nEnter the number of elements: ");  
+    scanf("%d", &n);
+
+    // Input elements in ascending order
+    printf("\nEnter the elements in ascending order: ");  
+    for(i = 0; i < n; i++) {
+        scanf("%d", &number[i]);
+    }
+
+    // Input element to be searched
+    printf("\nEnter the element to be searched: ");  
+    scanf("%d", &data);
+
+    low = 0;
+    high = n - 1;
+
+    // Binary search logic
+    while (low <= high) {
+        mid = (low + high) / 2;  
+
+        // If element is found
+        if (number[mid] == data) {
+            flag = 1;  
+            printf("\nData found at location: %d", mid + 1); // Location is mid + 1 (for 1-based index)
+            break;
+        }
+        // If data is less than mid value, narrow the search to the left
+        else if (data < number[mid]) {
+            high = mid - 1;
+        }
+        // If data is greater than mid value, narrow the search to the right
+        else {
+            low = mid + 1;
+        }
+    }
+
+    // If data was not found
+    if (flag == 0) {
+        printf("\nData Not Found");
+    }
+
+    return 0;
+}
