@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+void bubblesort(int x[], int n)
+{
+    int i, j, temp;
+    int swapped;  // To optimize the sorting
+
+    for (i = 0; i < n - 1; i++)  // Only need to iterate n-1 times
+    {
+        swapped = 0;  // Reset flag for each pass
+
+        for (j = 0; j < n - i - 1; j++)  // n-i-1 to avoid unnecessary comparisons
+        {
+            if (x[j] > x[j + 1])
+            {
+                temp = x[j];
+                x[j] = x[j + 1];
+                x[j + 1] = temp;
+                swapped = 1;  // If a swap occurred, mark it
+            }
+        }
+
+        if (!swapped)  // If no elements were swapped, the array is sorted
+            break;
+    }
+}
+
+int main()
+{
+    int i, n, x[25];
+
+    printf("\nEnter the number of elements: ");
+    scanf("%d", &n);
+    printf("\nEnter Data:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &x[i]);
+    }
+
+    bubblesort(x, n);
+
+    printf("\nArray Elements after sorting: ");
+    for (i = 0; i < n; i++)
+    {
+        printf("%5d", x[i]);
+    }
+
+    return 0;
+}
+
+
+
+
+///////////////////////////
+
